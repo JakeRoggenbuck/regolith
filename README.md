@@ -12,3 +12,5 @@ Review a lot of source code and try to find a percentage
 Why removing these features improves security
 
 ### A good post for HN or LinkedIn
+
+### Update poster and turn it into a website blog post
