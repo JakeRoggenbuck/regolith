@@ -7,11 +7,20 @@ A TypeScript (currently JS) library immune to ReDoS attacks by using Rust under 
 
 ^^ This needs a better explanation about how it's a categorically different way of doing regex that cannot be attack by ReDoS in the same way by not supporting the features that cause ReDoS.
 
+I should mention that it's an attempt at a drop in replacement for RegExp.
+
 ## Preventing ReDoS Attacks
 
 ### What are ReDoS attacks
 - Show an example
+
+Here is an example of a ReDoS attack from owasp:
+
+[https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)
+
 - Show the effect
+
+[Put Image Here]
 
 ### How Regolith prevents them
 - Talk about NFA
@@ -22,7 +31,22 @@ A TypeScript (currently JS) library immune to ReDoS attacks by using Rust under 
 
 ## Usage (Quick Start)
 
-- Show a quick start guide for how to use Regolith
+#### 1. Install
+
+```
+npm i regolith
+```
+
+#### 2. Try it out
+
+```
+import { Regolith } from 'regolith';
+
+const pattern = new Regolith("^\\d+$");
+
+pattern.test("12345");  // true
+pattern.test("Hello");  // false
+```
 
 ## Development
 
