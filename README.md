@@ -14,3 +14,7 @@ Why removing these features improves security
 ### A good post for HN or LinkedIn
 
 ### Update poster and turn it into a website blog post
+
+### Name
+
+I thought of an excellent name: https://www.npmjs.com/package/regolith -> **Regolith** and it's not taken!
