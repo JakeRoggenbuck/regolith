@@ -3,6 +3,11 @@
 [![Rust](https://img.shields.io/badge/Rust-1A5D8A?style=for-the-badge&logo=rust&logoColor=white)](https://github.com/JakeRoggenbuck?tab=repositories&q=&type=&language=rust&sort=stargazers)
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/JakeRoggenbuck?tab=repositories&q=&type=&language=typescript)
 
+<!-- TODO: Update the links to the yet to be published package -->
+[![Version](https://img.shields.io/npm/v/is_254_or_larger?style=for-the-badge)](https://www.npmjs.com/package/is_254_or_larger)
+[![NPM Downloads](https://img.shields.io/npm/dy/is_254_or_larger?style=for-the-badge)](https://www.npmjs.com/package/is_254_or_larger)
+[![CI](https://img.shields.io/github/actions/workflow/status/jakeroggenbuck/regolith/CI.yml?branch=main&style=for-the-badge)](https://github.com/JakeRoggenbuck/regolith/actions)
+
 A TypeScript (currently mostly JS) library immune to Regular Expression Denial of Service (ReDoS) attacks by using Rust and linear RegEx under the hood. Regolith has a linear worst case time complexity, compared to the default RegExp found in TypeScript and JavaScript, which has an exponential worst case.
 
 Regolith attempts to be a drop-in replacement for RegExp and requires minimal (to no) changes to be used instead. The goal of Regolith is to allow developers to easily build software that is immune to ReDoS attacks.
