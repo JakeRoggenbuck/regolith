@@ -53,6 +53,10 @@ console.log("Integer test:", integerPattern.test("12a45")); // false
 yarn test
 ```
 
+You should see the tests complete. Currently, there are 79 tests that get run.
+
+![image](https://github.com/user-attachments/assets/ad1fb9e6-9456-4ee1-830d-ab927401de81)
+
 ### Publishing Checklist
 
 1. Increment the version in [package.json](./package.json)
