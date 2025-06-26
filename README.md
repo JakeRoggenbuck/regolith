@@ -7,6 +7,9 @@ A TypeScript (currently mostly JS) library immune to Regular Expression Denial o
 
 Regolith attempts to be a drop-in replacement for RegExp and requires minimal (to no) changes to be used instead. The goal of Regolith is to allow developers to easily build software that is immune to ReDoS attacks.
 
+> [!IMPORTANT]
+> Regolith is still early in development! We need help building and getting developer adoption!
+
 ## Preventing ReDoS Attacks
 
 ### What are ReDoS attacks
