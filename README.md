@@ -2,6 +2,23 @@
 This will be the Repo I use to test Regolith and how I would build it.
 Once I know how to do it, I will make a new repo.
 
+## Building
+
+```sh
+yarn build
+```
+
+## Running
+
+```sh
+node
+```
+
+```ts
+const regolith = require("./index");
+regolith.sum(1, 2)
+```
+
 ### Crabby Rust --- OLD README
 This is an experiment to try to get Rust's regex library to work in a TypeScript library. The reason for this is to prevent ReDoS attacks in TypeScript.
 
