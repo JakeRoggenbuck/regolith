@@ -102,4 +102,4 @@ You should see the tests complete. Currently, there are 79 tests that get run.
 
 ### Report a Bug
 
-If you find a bug, please send me an email at [bug@jr0.org](mailto:bug@jr0.org) or and [open an issue](https://github.com/JakeRoggenbuck/regolith/issues).
+If you find a bug, please send me an email at `bug at jr0 dot org` or and [open an issue](https://github.com/JakeRoggenbuck/regolith/issues).
