@@ -2,7 +2,7 @@ const { Regolith } = require('./index');
 
 const pattern = new Regolith("dog", "g");
 
-console.log(pattern.test("my dog")); // true
+console.log(pattern.test("my dog"));
 
 const namePattern = new Regolith("(\\w+)\\s+(\\w+)");
 const result = namePattern.exec("John Doe");
