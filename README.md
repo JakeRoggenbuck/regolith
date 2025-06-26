@@ -3,24 +3,25 @@
 [![Rust](https://img.shields.io/badge/Rust-1A5D8A?style=for-the-badge&logo=rust&logoColor=white)](https://github.com/JakeRoggenbuck?tab=repositories&q=&type=&language=rust&sort=stargazers)
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/JakeRoggenbuck?tab=repositories&q=&type=&language=typescript)
 
-A TypeScript (currently JS) library immune to ReDoS attacks by using Rust under the hood.
+A TypeScript (currently mostly JS) library immune to Regular Expression Denial of Service (ReDoS) attacks by using Rust and linear RegEx under the hood. Regolith has a linear worst case time complexity, compared to the default RegExp found in TypeScript and JavaScript, which has an exponential worst case.
 
-^^ This needs a better explanation about how it's a categorically different way of doing regex that cannot be attack by ReDoS in the same way by not supporting the features that cause ReDoS.
-
-I should mention that it's an attempt at a drop in replacement for RegExp.
+Regolith attempts to be a drop-in replacement for RegExp and requires minimal (to no) changes to be used instead. The goal of Regolith is to allow developers to easily build software that is immune to ReDoS attacks.
 
 ## Preventing ReDoS Attacks
 
 ### What are ReDoS attacks
-- Show an example
-
-Here is an example of a ReDoS attack from owasp:
 
 [https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)
 
-- Show the effect
+Here is an example of how Python has an exponetial increase in execution time for worst case.
 
-[Put Image Here]
+![image](https://github.com/user-attachments/assets/bc346814-92ca-44c9-b906-d9fa22df7095)
+
+Here is a table showing some popular languages and if their RegEx library has an exponential worst case or not.
+
+![image](https://github.com/user-attachments/assets/e3e3fd36-35de-4958-b092-80ee04a590ec)
+
+Images: Jake Roggenbuck - Preventing ReDoS Attacks - 2025
 
 ### How Regolith prevents them
 - Talk about NFA
@@ -28,6 +29,8 @@ Here is an example of a ReDoS attack from owasp:
 
 ### What the result is
 - Talk about all the different CVEs that happen and how they can be avoided
+
+Since ReDoS vulnerabilites are hard to spot, there are rather frequent CVEs that get submitted. Having a RegEx library that has a linear worst case time would completely prevent all of these potential issues.
 
 ## Usage (Quick Start)
 
@@ -39,7 +42,7 @@ npm i regolith
 
 #### 2. Try it out
 
-```
+```ts
 import { Regolith } from 'regolith';
 
 const pattern = new Regolith("^\\d+$");
