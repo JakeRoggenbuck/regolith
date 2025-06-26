@@ -15,8 +15,18 @@ node
 ```
 
 ```ts
-const regolith = require("./index");
-regolith.sum(1, 2)
+import { Regolith } from './regolith';
+
+const integerPattern = new Regolith("^\\d+$");
+
+console.log("Integer test:", integerPattern.test("12345")); // true
+console.log("Integer test:", integerPattern.test("12a45")); // false
+```
+
+## Testing
+
+```
+yarn test
 ```
 
 ### Crabby Rust --- OLD README
