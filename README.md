@@ -3,13 +3,32 @@ A TypeScript (currently JS) library immune to ReDoS attacks by using Rust under 
 
 ^^ This needs a better explanation about how it's a categorically different way of doing regex that cannot be attack by ReDoS in the same way by not supporting the features that cause ReDoS.
 
-## Building
+## Preventing ReDoS Attacks
+
+### What are ReDoS attacks
+- Show an example
+- Show the effect
+
+### How Regolith prevents them
+- Talk about NFA
+- Talk about Rust Regex
+
+### What the result is
+- Talk about all the different CVEs that happen and how they can be avoided
+
+## Usage (Quick Start)
+
+- Show a quick start guide for how to use Regolith
+
+## Development
+
+### Building
 
 ```sh
 yarn build
 ```
 
-## Running
+### Running
 
 ```sh
 node
@@ -24,7 +43,7 @@ console.log("Integer test:", integerPattern.test("12345")); // true
 console.log("Integer test:", integerPattern.test("12a45")); // false
 ```
 
-## Testing
+### Testing
 
 ```
 yarn test
