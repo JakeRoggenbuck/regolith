@@ -52,3 +52,8 @@ console.log("Integer test:", integerPattern.test("12a45")); // false
 ```
 yarn test
 ```
+
+### Publishing
+
+1. Make sure to increment the version in [package.json](./package.json)
+2. Make sure to run the tests with `yarn test`
