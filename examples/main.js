@@ -1,4 +1,4 @@
-const { Regolith } = require('./index');
+import { Regolith } from "regolith";
 
 const pattern = new Regolith("dog", "g");
 
