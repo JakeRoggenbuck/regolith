@@ -16,10 +16,10 @@ impl Regolith {
   #[napi(constructor)]
   pub fn new(pattern: String, flags: Option<String>) -> napi::Result<Self> {
     let flags = flags.unwrap_or_default();
-    
+
     // Convert JS flags to regex builder
     let mut builder = regex::RegexBuilder::new(&pattern);
-    
+
     if flags.contains('i') {
       builder.case_insensitive(true);
     }
@@ -29,7 +29,7 @@ impl Regolith {
     if flags.contains('s') {
       builder.dot_matches_new_line(true);
     }
-    
+
     match builder.build() {
       Ok(regex) => Ok(Self {
         regex,
@@ -51,13 +51,13 @@ impl Regolith {
   #[napi]
   pub fn exec(&self, input: String) -> Option<Vec<String>> {
     if let Some(captures) = self.regex.captures(&input) {
-      let mut result = Vec::new();
-      
+      let mut result: Vec<String> = Vec::new();
+
       // Add the full match
       if let Some(full_match) = captures.get(0) {
         result.push(full_match.as_str().to_string());
       }
-      
+
       // Add capture groups
       for i in 1..captures.len() {
         if let Some(capture) = captures.get(i) {
@@ -66,7 +66,7 @@ impl Regolith {
           result.push(String::new());
         }
       }
-      
+
       Some(result)
     } else {
       None
@@ -77,11 +77,12 @@ impl Regolith {
   pub fn match_str(&self, input: String) -> Option<Vec<String>> {
     if self.flags.contains('g') {
       // Global match - return all matches
-      let matches: Vec<String> = self.regex
+      let matches: Vec<String> = self
+        .regex
         .find_iter(&input)
         .map(|m| m.as_str().to_string())
         .collect();
-      
+
       if matches.is_empty() {
         None
       } else {
@@ -101,7 +102,10 @@ impl Regolith {
   pub fn replace(&self, input: String, replacement: String) -> String {
     if self.flags.contains('g') {
       // Global replace
-      self.regex.replace_all(&input, replacement.as_str()).to_string()
+      self
+        .regex
+        .replace_all(&input, replacement.as_str())
+        .to_string()
     } else {
       // Single replace
       self.regex.replace(&input, replacement.as_str()).to_string()
@@ -120,11 +124,12 @@ impl Regolith {
   #[napi]
   pub fn split(&self, input: String, limit: Option<u32>) -> Vec<String> {
     let limit = limit.unwrap_or(0);
-    
+
     if limit == 0 {
       self.regex.split(&input).map(|s| s.to_string()).collect()
     } else {
-      self.regex
+      self
+        .regex
         .splitn(&input, limit as usize)
         .map(|s| s.to_string())
         .collect()
@@ -154,5 +159,32 @@ impl Regolith {
   #[napi(getter)]
   pub fn multiline(&self) -> bool {
     self.flags.contains('m')
+  }
+}
+
+#[cfg(test)]
+mod tests {
+  use super::*;
+
+  #[test]
+  fn get_source_test() {
+    let source = "^\\d+$".to_string();
+    let r = Regolith::new(source.clone(), None).unwrap();
+
+    assert_eq!(r.source(), source);
+
+    let source2 = "a".to_string();
+    let r2 = Regolith::new(source2.clone(), None).unwrap();
+
+    assert_eq!(r2.source(), source2);
+  }
+
+  #[test]
+  fn get_flags_test() {
+    let source = "^\\d+$".to_string();
+    let r = Regolith::new(source.clone(), Some(String::from("i"))).unwrap();
+
+    assert_eq!(r.flags(), String::from("i"));
+    assert_ne!(r.flags(), String::from("m"));
   }
 }
