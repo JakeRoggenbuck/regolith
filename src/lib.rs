@@ -226,4 +226,87 @@ mod tests {
 
     assert!(!r.multiline());
   }
+
+  #[test]
+  fn test_method_test() {
+    let r = Regolith::new("foo".to_string(), None).unwrap();
+    assert!(r.test("foobar".to_string()));
+    assert!(!r.test("barbaz".to_string()));
+  }
+
+  #[test]
+  fn exec_method_test() {
+    let r = Regolith::new("(foo)(bar)?".to_string(), None).unwrap();
+    let result = r.exec("foobar".to_string());
+
+    assert_eq!(
+      result,
+      Some(vec![
+        "foobar".to_string(),
+        "foo".to_string(),
+        "bar".to_string()
+      ])
+    );
+
+    let result_none = r.exec("baz".to_string());
+    assert_eq!(result_none, None);
+
+    // Test with missing optional group
+    let result_partial = r.exec("foo".to_string());
+    assert_eq!(
+      result_partial,
+      Some(vec!["foo".to_string(), "foo".to_string(), "".to_string()])
+    );
+  }
+
+  #[test]
+  fn match_str_method_test() {
+    // Non-global
+    let r = Regolith::new("foo".to_string(), None).unwrap();
+    let result = r.match_str("foofoo".to_string());
+    assert_eq!(result, Some(vec!["foo".to_string()]));
+
+    let result_none = r.match_str("bar".to_string());
+    assert_eq!(result_none, None);
+
+    // Global
+    let r = Regolith::new("foo".to_string(), Some("g".to_string())).unwrap();
+    let result = r.match_str("foofoo".to_string());
+    assert_eq!(result, Some(vec!["foo".to_string(), "foo".to_string()]));
+  }
+
+  #[test]
+  fn replace_method_test() {
+    // Non-global
+    let r = Regolith::new("foo".to_string(), None).unwrap();
+    let result = r.replace("foofoo".to_string(), "bar".to_string());
+    assert_eq!(result, "barfoo");
+
+    // Global
+    let r = Regolith::new("foo".to_string(), Some("g".to_string())).unwrap();
+    let result = r.replace("foofoo".to_string(), "bar".to_string());
+    assert_eq!(result, "barbar");
+  }
+
+  #[test]
+  fn search_method_test() {
+    let r = Regolith::new("foo".to_string(), None).unwrap();
+    assert_eq!(r.search("barfoo".to_string()), 3);
+    assert_eq!(r.search("barbaz".to_string()), -1);
+  }
+
+  #[test]
+  fn split_method_test() {
+    let r = Regolith::new(",".to_string(), None).unwrap();
+    let result = r.split("a,b,c".to_string(), None);
+
+    assert_eq!(
+      result,
+      vec!["a".to_string(), "b".to_string(), "c".to_string()]
+    );
+
+    // With limit
+    let result = r.split("a,b,c".to_string(), Some(2));
+    assert_eq!(result, vec!["a".to_string(), "b,c".to_string()]);
+  }
 }
