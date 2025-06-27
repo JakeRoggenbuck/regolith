@@ -25,11 +25,19 @@ Regolith attempts to be a drop-in replacement for RegExp and requires minimal (t
 
 ### What are ReDoS attacks
 
-[https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)
+Regular Expression Denial of Service (ReDoS) attacks occur when vulnerable Regex patterns are executed with specificly contructed inputs that results in an inefficient execution. This can be exploited to cause services to become unavailable because the services are stuck trying to compute a difficult to compute Regex.
+
+Read more: [owasp.org](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS) & [learn.snyk.io](https://learn.snyk.io/lesson/redos/?ecosystem=javascript)
+
+### Exponential Worst Case
 
 Here is an example of how Python has an exponetial increase in execution time for worst case.
 
 <img src="https://github.com/user-attachments/assets/bc346814-92ca-44c9-b906-d9fa22df7095" width="700" />
+
+This is the same case for TypeScript and JavaScript.
+
+### Linear vs Exponential Regex Libraries
 
 Here is a table showing popular languages and if their Regex library has a linear worst case or an exponential worst case. It also includes experimental results for how long execution took for a vulnerable Regex pattern that can be attacked with ReDoS and an input of size 30. 
 
