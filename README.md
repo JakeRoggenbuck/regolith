@@ -10,6 +10,8 @@
 
 A TypeScript and JavaScript library immune to Regular Expression Denial of Service (ReDoS) attacks by using Rust and linear RegEx under the hood. Regolith has a linear worst case time complexity, compared to the default RegExp found in TypeScript and JavaScript, which has an exponential worst case.
 
+**Motivation:** I wanted a Regex library for TypeScript and JavaScript where I didn't have to worry about ReDoS attacks.
+
 > [!IMPORTANT]
 > Regolith is still early in development! We need help building and getting developer adoption!
 
@@ -142,7 +144,7 @@ Here is what the output should look like:
 
 If you find a bug, please send me an email at `bug at jr0 dot org` or and [open an issue](https://github.com/JakeRoggenbuck/regolith/issues).
 
-### Motivation
+### Motivation and Background
 
 I was initially inspired to build this library after doing [undergraduate research](https://jr0.org/cdn/Roggenbuck-Jake-Preventing-ReDoS-Attacks-2025.pdf) to learn more about why certain languages have problems with ReDoS and others don't. This led me to a question I couldn't answer: Why isn't there a linear time Regex library for languages like TypeScript, JavaScript, and Python? You'd think that having a library that cannot get attacked (in a common way software often gets attacked) would be more commonly used. I found an example called [regexy](https://github.com/nitely/regexy) in Python, but there hasn't been an update in 8 years, and it was archived in 2024.
 
