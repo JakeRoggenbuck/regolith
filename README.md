@@ -27,11 +27,13 @@ Here is an example of how Python has an exponetial increase in execution time fo
 
 ![image](https://github.com/user-attachments/assets/bc346814-92ca-44c9-b906-d9fa22df7095)
 
-Here is a table showing some popular languages and if their RegEx library has an exponential worst case or not.
+Here is a table showing popular languages and if their Regex library has a linear worst case or an exponential worst case. It also includes experimental results for how long execution took for a vulnerable Regex pattern that can be attacked with ReDoS and an input of size 30. 
 
 ![image](https://github.com/user-attachments/assets/e3e3fd36-35de-4958-b092-80ee04a590ec)
 
-Images: Jake Roggenbuck - Preventing ReDoS Attacks - 2025
+Note that TypeScript and JavaScript do not have a linear worst case for Regex, making them vulnerable to these types of attacks.
+
+Images: [Jake Roggenbuck - Preventing ReDoS Attacks - 2025](https://jr0.org/cdn/Roggenbuck-Jake-Preventing-ReDoS-Attacks-2025.pdf)
 
 ### How Regolith prevents them
 - Talk about NFA
