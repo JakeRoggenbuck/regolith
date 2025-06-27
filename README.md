@@ -37,7 +37,7 @@ Here is a table showing popular languages and if their Regex library has a linea
 
 Note that TypeScript and JavaScript do not have a linear worst case for Regex, making them vulnerable to these types of attacks.
 
-Images: [Jake Roggenbuck - Preventing ReDoS Attacks - 2025](https://jr0.org/cdn/Roggenbuck-Jake-Preventing-ReDoS-Attacks-2025.pdf)
+More information and images: [Jake Roggenbuck - Preventing ReDoS Attacks - 2025](https://jr0.org/cdn/Roggenbuck-Jake-Preventing-ReDoS-Attacks-2025.pdf)
 
 ### How Regolith prevents them
 - Talk about NFA
