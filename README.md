@@ -158,6 +158,8 @@ Here is what the output should look like:
 | `package.json` | Information about the Regolith package                                                                                |      |
 | `rustfmt.toml` | A config for the Rust formatter                                                                                       |      |
 | `yarn.lock`    | Keeps track of the dependency version for yarn and it automatically generated                                         |      |
+| `.npmignore`   |                                                                                                                       |      |
+| `.yarnrc.yml`  |                                                                                                                       |      |
 
 #### 2. Formatting
 
