@@ -191,12 +191,12 @@ mod tests {
   #[test]
   fn check_global_test() {
     let source = "^\\d+$".to_string();
-    let r = Regolith::new(source.clone(), Some(String::from("g"))).unwrap();
+    let r = Regolith::new(source, Some(String::from("g"))).unwrap();
 
     assert!(r.global());
 
     let source = "^\\d+$".to_string();
-    let r = Regolith::new(source.clone(), Some(String::from("m"))).unwrap();
+    let r = Regolith::new(source, Some(String::from("m"))).unwrap();
 
     assert!(!r.global());
   }
@@ -204,13 +204,26 @@ mod tests {
   #[test]
   fn check_ignore_case_test() {
     let source = "^\\d+$".to_string();
-    let r = Regolith::new(source.clone(), Some(String::from("i"))).unwrap();
+    let r = Regolith::new(source, Some(String::from("i"))).unwrap();
 
     assert!(r.ignore_case());
 
     let source = "^\\d+$".to_string();
-    let r = Regolith::new(source.clone(), Some(String::from("m"))).unwrap();
+    let r = Regolith::new(source, Some(String::from("m"))).unwrap();
 
     assert!(!r.ignore_case());
+  }
+
+  #[test]
+  fn check_multiline_test() {
+    let source = "^\\d+$".to_string();
+    let r = Regolith::new(source, Some(String::from("m"))).unwrap();
+
+    assert!(r.multiline());
+
+    let source = "^\\d+$".to_string();
+    let r = Regolith::new(source, Some(String::from("i"))).unwrap();
+
+    assert!(!r.multiline());
   }
 }
