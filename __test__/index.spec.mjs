@@ -539,3 +539,94 @@ test('nested quantifier test', (t) => {
     t.pass('Performance test handled gracefully');
   }
 });
+
+test('large input: repeated pattern match', (t) => {
+  const jsRegex = new RegExp('a+b+', 'g');
+  const regolith = new Regolith('a+b+', 'g');
+  const input = 'aabbb'.repeat(10000);
+  testRegexMethod(t, jsRegex, regolith, input, 'match');
+});
+
+test('large input: replace all', (t) => {
+  const jsRegex = new RegExp('foo', 'g');
+  const regolith = new Regolith('foo', 'g');
+  const input = 'foo'.repeat(20000);
+  testRegexMethod(t, jsRegex, regolith, input, 'replace', 'bar');
+});
+
+test('large input: split', (t) => {
+  const jsRegex = new RegExp(',', 'g');
+  const regolith = new Regolith(',', 'g');
+  const input = Array(50000).fill('x').join(',');
+  testRegexMethod(t, jsRegex, regolith, input, 'split');
+});
+
+test('large input: multiline dotall', (t) => {
+  const jsRegex = new RegExp('.+', 'msg');
+  const regolith = new Regolith('.+', 'msg');
+  const input = 'foo\nbar\nbaz\nqux'.repeat(1000);
+  testRegexMethod(t, jsRegex, regolith, input, 'match');
+});
+
+test('edge case: empty input string', (t) => {
+  const jsRegex = new RegExp('abc');
+  const regolith = new Regolith('abc');
+  testRegexMethod(t, jsRegex, regolith, '', 'test');
+});
+
+test('edge case: very long non-matching input', (t) => {
+  const jsRegex = new RegExp('xyz');
+  const regolith = new Regolith('xyz');
+  const input = 'a'.repeat(100000);
+  testRegexMethod(t, jsRegex, regolith, input, 'test');
+});
+
+test('edge case: unicode grapheme cluster', (t) => {
+  const jsRegex = new RegExp('👨‍👩‍👧‍👦');
+  const regolith = new Regolith('👨‍👩‍👧‍👦');
+  testRegexMethod(t, jsRegex, regolith, 'family: 👨‍👩‍👧‍👦', 'test');
+});
+
+test('edge case: overlapping matches', (t) => {
+  const jsRegex = new RegExp('aba', 'g');
+  const regolith = new Regolith('aba', 'g');
+  testRegexMethod(t, jsRegex, regolith, 'ababa', 'match');
+});
+
+test('edge case: lookahead assertion', (t) => {
+  const jsRegex = new RegExp('foo(?=bar)');
+  const error = t.throws(() => new Regolith('foo(?=bar)'));
+  t.is(error.code, 'InvalidArg');
+  t.regex(error.message, /look-around/);
+});
+
+test('edge case: lookbehind assertion', (t) => {
+  const jsRegex = new RegExp('(?<=foo)bar');
+  const error = t.throws(() => new Regolith('(?<=foo)bar'));
+  t.is(error.code, 'InvalidArg');
+  t.regex(error.message, /look-around/);
+});
+
+test('normal use: extract domain from email', (t) => {
+  const jsRegex = new RegExp('@([\w.-]+)');
+  const regolith = new Regolith('@([\w.-]+)');
+  testRegexMethod(t, jsRegex, regolith, 'user@example.com', 'exec');
+});
+
+test('normal use: validate username', (t) => {
+  const jsRegex = new RegExp('^[a-zA-Z0-9_]{3,16}$');
+  const regolith = new Regolith('^[a-zA-Z0-9_]{3,16}$');
+  testRegexMethod(t, jsRegex, regolith, 'user_123', 'test');
+});
+
+test('normal use: parse CSV line', (t) => {
+  const jsRegex = new RegExp(',');
+  const regolith = new Regolith(',');
+  testRegexMethod(t, jsRegex, regolith, 'a,b,c,d,e', 'split');
+});
+
+test('normal use: extract hashtags', (t) => {
+  const jsRegex = new RegExp('#(\\w+)', 'g');
+  const regolith = new Regolith('#(\\w+)', 'g');
+  testRegexMethod(t, jsRegex, regolith, 'Loving the #sunshine and #beach!', 'match');
+});
