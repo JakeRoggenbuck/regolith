@@ -187,4 +187,30 @@ mod tests {
     assert_eq!(r.flags(), String::from("i"));
     assert_ne!(r.flags(), String::from("m"));
   }
+
+  #[test]
+  fn check_global_test() {
+    let source = "^\\d+$".to_string();
+    let r = Regolith::new(source.clone(), Some(String::from("g"))).unwrap();
+
+    assert!(r.global());
+
+    let source = "^\\d+$".to_string();
+    let r = Regolith::new(source.clone(), Some(String::from("m"))).unwrap();
+
+    assert!(!r.global());
+  }
+
+  #[test]
+  fn check_ignore_case_test() {
+    let source = "^\\d+$".to_string();
+    let r = Regolith::new(source.clone(), Some(String::from("i"))).unwrap();
+
+    assert!(r.ignore_case());
+
+    let source = "^\\d+$".to_string();
+    let r = Regolith::new(source.clone(), Some(String::from("m"))).unwrap();
+
+    assert!(!r.ignore_case());
+  }
 }
