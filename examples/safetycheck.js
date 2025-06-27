@@ -1,4 +1,4 @@
-const { Regolith } = require('./index');
+import { Regolith } from "regolith";
 
 function runWithTimeout(fn, timeout) {
   return new Promise((resolve, reject) => {
@@ -190,8 +190,4 @@ async function runReDoSTests() {
   console.log('- Runtime limits and monitoring');
 }
 
-if (require.main === module) {
-  runReDoSTests().catch(console.error);
-}
-
-module.exports = { runReDoSTests, testReDoSSafety };
+runReDoSTests().catch(console.error);
