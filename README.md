@@ -39,12 +39,16 @@ Note that TypeScript and JavaScript do not have a linear worst case for Regex, m
 
 More information and images: [Jake Roggenbuck - Preventing ReDoS Attacks - 2025](https://jr0.org/cdn/Roggenbuck-Jake-Preventing-ReDoS-Attacks-2025.pdf)
 
+<!-- TODO
 ### How Regolith prevents them
 - Talk about NFA
 - Talk about Rust Regex
+-->
 
-### What the result is
+### Results
+<!-- TODO
 - Talk about all the different CVEs that happen and how they can be avoided
+-->
 
 Since ReDoS vulnerabilites are hard to spot, there are rather frequent CVEs that get submitted. Having a RegEx library that has a linear worst case time would completely prevent all of these potential issues.
 
