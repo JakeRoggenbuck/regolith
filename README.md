@@ -167,6 +167,8 @@ You should see the tests complete. Currently, there are 93 tests that get run.
 
 ![image](https://github.com/user-attachments/assets/2b7a8140-a4f9-430d-8c59-d6369efa67ed)
 
+These tests can be found in the [`__test__`](./__test__/index.spec.mjs) directory.
+
 #### Testing the Rust bindings
 
 ```
@@ -176,6 +178,8 @@ cargo test
 Here is what the output should look like:
 
 ![image](https://github.com/user-attachments/assets/86d5ec69-6cc4-4ba5-bf9b-e6005023e329)
+
+These can be found in the source files in [`src/lib.rs`](./src/lib.rs)
 
 ### Publishing Checklist
 
