@@ -179,7 +179,7 @@ Here is what the output should look like:
 
 ![image](https://github.com/user-attachments/assets/86d5ec69-6cc4-4ba5-bf9b-e6005023e329)
 
-These can be found in the source files in [`src/lib.rs`](./src/lib.rs)
+These can be found in the source files in [`src/lib.rs`](./src/lib.rs).
 
 ### Publishing Checklist
 
