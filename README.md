@@ -47,6 +47,33 @@ Note that TypeScript and JavaScript do not have a linear worst case for Regex, m
 
 More information and images: [Jake Roggenbuck - Preventing ReDoS Attacks - 2025](https://jr0.org/cdn/Roggenbuck-Jake-Preventing-ReDoS-Attacks-2025.pdf)
 
+### Impact
+
+> [!NOTE]  
+> ReDoS attacks happen relatively frequently to popular libraries costing millions of hours of work. This can be prevented with linear regex engines like Regolith.
+
+These vulnerabilities happen relatively often in popular libraries. It's no one's fault specifically, it just comes down to the fact that the language allows for these things to happen.
+
+A recent example of a ReDoS vulneravility is [CVE-2025-5889](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-5889) from [brace-expansion](https://github.com/juliangruber/brace-expansion). Again, this isn't any fault of that project, it's simply an issue with the language allowing this to happen. Measures can be put into place to reduce the risk of this, but it's hard to spot and test for these issues.
+
+The [brace-expansion](https://github.com/juliangruber/brace-expansion) project is used by 42.5 million other projects on GitHub. Meaning if everyone were to patch their software (which the hopefully will), that's 42.5 million pull requests, and 42.5 million build minutes, and probably more than 42 million engineering minutes as well. All of that for a single vulnerability, and that's just a lower bound of effort spent on this.
+
+Other versions of [brace-expansion](https://github.com/juliangruber/brace-expansion) had these patches backported to them, needing updates for version [1](https://github.com/juliangruber/brace-expansion/commit/c3c73c8b088defc70851843be88ccc3af08e7217), [2](https://github.com/juliangruber/brace-expansion/commit/36603d5f3599a37af9e85eda30acd7d28599c36e), [3](https://github.com/juliangruber/brace-expansion/commit/15f9b3c75ebf5988198241fecaebdc45eff28a9f), and the current version [4](https://github.com/juliangruber/brace-expansion/pull/65).
+
+Having a library that is immune to these vulnerabilities would save that effort if widely adopted. Adoption of libraries is difficult, especially when they aren't very flashy, but helping library mainainers and engineers not worry about ReDoS for one library, one project at a time, is our goal.
+
+### Trade-off
+
+The Rust [Regex library](https://docs.rs/regex/latest/regex/) purposefully excludes features that make Regex engines particularly vulnerable to ReDoS attacks. Those features being backreferences and look-around. Excluding those features allow [Regex](https://docs.rs/regex/latest/regex/) to guarantee linear time execution.
+
+Since Regolith uses Rust bindings to implement the Rust [Regex library](https://docs.rs/regex/latest/regex/) to achieve linear time worst case, this means that backreferences and look-around aren't available in Regolith either.
+
+This trade-off has proven to be worth it for the Rust community of libraries and projects.
+
+<!-- TODO
+Explain specifically what backreferences and look-around are.
+-->
+
 <!-- TODO
 ### How Regolith prevents them
 - Talk about NFA
@@ -59,6 +86,12 @@ More information and images: [Jake Roggenbuck - Preventing ReDoS Attacks - 2025]
 -->
 
 Since ReDoS vulnerabilites are hard to spot, there are rather frequent CVEs that get submitted. Having a RegEx library that has a linear worst case time would completely prevent all of these potential issues.
+
+### Rust Regex under the hood
+
+Regolith makes JavaScript bindings (using [napi-rs](https://github.com/napi-rs/napi-rs)) that implement the features of the very popular [Regex library](https://docs.rs/regex/latest/regex/) for Rust. Initially when I had this idea for this library, I wanted to implement my own linear time regex engine. Now there is a chance I still end up doing that, I realized it's better to not duplicate the work of the already excellent [Regex library](https://docs.rs/regex/latest/regex/) and focus on making these JavaScript and TypeScript bindings the best they can be. The focus of this project is to deliver the best linear time regex engine to TypeScript and JavaScript, where it prevously hasn't been widely available to use.
+
+My full appreciation goes out to the developers of the Rust Regex library, who enabled this project to exist.
 
 ## Usage (Quick Start)
 
