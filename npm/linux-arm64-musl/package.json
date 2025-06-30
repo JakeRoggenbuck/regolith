@@ -1,5 +1,5 @@
 {
-  "name": "regolith-linux-arm64-musl",
+  "name": "@regolith/regolith-linux-arm64-musl",
   "version": "0.1.0",
   "os": [
     "linux"

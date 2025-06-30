@@ -1,5 +1,5 @@
 {
-  "name": "regolith-darwin-universal",
+  "name": "@regolith/regolith-darwin-universal",
   "version": "0.1.0",
   "os": [
     "darwin"
