@@ -37,7 +37,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./regolith.android-arm64.node')
           } else {
-            nativeBinding = require('regolith-android-arm64')
+            nativeBinding = require('@regolith/regolith-android-arm64')
           }
         } catch (e) {
           loadError = e
@@ -49,7 +49,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./regolith.android-arm-eabi.node')
           } else {
-            nativeBinding = require('regolith-android-arm-eabi')
+            nativeBinding = require('@regolith/regolith-android-arm-eabi')
           }
         } catch (e) {
           loadError = e
@@ -69,7 +69,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./regolith.win32-x64-msvc.node')
           } else {
-            nativeBinding = require('regolith-win32-x64-msvc')
+            nativeBinding = require('@regolith/regolith-win32-x64-msvc')
           }
         } catch (e) {
           loadError = e
@@ -83,7 +83,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./regolith.win32-ia32-msvc.node')
           } else {
-            nativeBinding = require('regolith-win32-ia32-msvc')
+            nativeBinding = require('@regolith/regolith-win32-ia32-msvc')
           }
         } catch (e) {
           loadError = e
@@ -97,7 +97,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./regolith.win32-arm64-msvc.node')
           } else {
-            nativeBinding = require('regolith-win32-arm64-msvc')
+            nativeBinding = require('@regolith/regolith-win32-arm64-msvc')
           }
         } catch (e) {
           loadError = e
@@ -113,7 +113,7 @@ switch (platform) {
       if (localFileExisted) {
         nativeBinding = require('./regolith.darwin-universal.node')
       } else {
-        nativeBinding = require('regolith-darwin-universal')
+        nativeBinding = require('@regolith/regolith-darwin-universal')
       }
       break
     } catch {}
@@ -124,7 +124,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./regolith.darwin-x64.node')
           } else {
-            nativeBinding = require('regolith-darwin-x64')
+            nativeBinding = require('@regolith/regolith-darwin-x64')
           }
         } catch (e) {
           loadError = e
@@ -138,7 +138,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./regolith.darwin-arm64.node')
           } else {
-            nativeBinding = require('regolith-darwin-arm64')
+            nativeBinding = require('@regolith/regolith-darwin-arm64')
           }
         } catch (e) {
           loadError = e
@@ -157,7 +157,7 @@ switch (platform) {
       if (localFileExisted) {
         nativeBinding = require('./regolith.freebsd-x64.node')
       } else {
-        nativeBinding = require('regolith-freebsd-x64')
+        nativeBinding = require('@regolith/regolith-freebsd-x64')
       }
     } catch (e) {
       loadError = e
@@ -174,7 +174,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./regolith.linux-x64-musl.node')
             } else {
-              nativeBinding = require('regolith-linux-x64-musl')
+              nativeBinding = require('@regolith/regolith-linux-x64-musl')
             }
           } catch (e) {
             loadError = e
@@ -187,7 +187,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./regolith.linux-x64-gnu.node')
             } else {
-              nativeBinding = require('regolith-linux-x64-gnu')
+              nativeBinding = require('@regolith/regolith-linux-x64-gnu')
             }
           } catch (e) {
             loadError = e
@@ -203,7 +203,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./regolith.linux-arm64-musl.node')
             } else {
-              nativeBinding = require('regolith-linux-arm64-musl')
+              nativeBinding = require('@regolith/regolith-linux-arm64-musl')
             }
           } catch (e) {
             loadError = e
@@ -216,7 +216,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./regolith.linux-arm64-gnu.node')
             } else {
-              nativeBinding = require('regolith-linux-arm64-gnu')
+              nativeBinding = require('@regolith/regolith-linux-arm64-gnu')
             }
           } catch (e) {
             loadError = e
@@ -232,7 +232,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./regolith.linux-arm-musleabihf.node')
             } else {
-              nativeBinding = require('regolith-linux-arm-musleabihf')
+              nativeBinding = require('@regolith/regolith-linux-arm-musleabihf')
             }
           } catch (e) {
             loadError = e
@@ -245,7 +245,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./regolith.linux-arm-gnueabihf.node')
             } else {
-              nativeBinding = require('regolith-linux-arm-gnueabihf')
+              nativeBinding = require('@regolith/regolith-linux-arm-gnueabihf')
             }
           } catch (e) {
             loadError = e
@@ -261,7 +261,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./regolith.linux-riscv64-musl.node')
             } else {
-              nativeBinding = require('regolith-linux-riscv64-musl')
+              nativeBinding = require('@regolith/regolith-linux-riscv64-musl')
             }
           } catch (e) {
             loadError = e
@@ -274,7 +274,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./regolith.linux-riscv64-gnu.node')
             } else {
-              nativeBinding = require('regolith-linux-riscv64-gnu')
+              nativeBinding = require('@regolith/regolith-linux-riscv64-gnu')
             }
           } catch (e) {
             loadError = e
@@ -289,7 +289,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./regolith.linux-s390x-gnu.node')
           } else {
-            nativeBinding = require('regolith-linux-s390x-gnu')
+            nativeBinding = require('@regolith/regolith-linux-s390x-gnu')
           }
         } catch (e) {
           loadError = e
