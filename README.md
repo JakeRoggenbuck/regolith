@@ -25,7 +25,7 @@ Regolith attempts to be a drop-in replacement for RegExp and requires minimal (t
 
 ### What are ReDoS attacks?
 
-Regular Expression Denial of Service (ReDoS) attacks occur when vulnerable Regex patterns are executed with specifically contructed inputs that result in an inefficient execution. This can be exploited to cause services to become unavailable because the services are stuck trying to compute a difficult to compute Regex.
+Regular Expression Denial of Service (ReDoS) attacks occur when vulnerable Regex patterns are executed with specifically constructed inputs that result in an inefficient execution. This can be exploited to cause services to become unavailable because the services are stuck trying to compute a difficult to compute Regex.
 
 Read more: [owasp.org](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS) & [learn.snyk.io](https://learn.snyk.io/lesson/redos/?ecosystem=javascript)
 
