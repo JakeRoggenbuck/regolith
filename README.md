@@ -8,7 +8,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dy/is_254_or_larger?style=for-the-badge)](https://www.npmjs.com/package/is_254_or_larger)
 [![CI](https://img.shields.io/github/actions/workflow/status/jakeroggenbuck/regolith/CI.yml?branch=main&style=for-the-badge)](https://github.com/JakeRoggenbuck/regolith/actions)
 
-A TypeScript and JavaScript library immune to Regular Expression Denial of Service (ReDoS) attacks by using Rust and linear RegEx under the hood. Regolith has a linear worst case time complexity, compared to the default RegExp found in TypeScript and JavaScript, which has an exponential worst case.
+A TypeScript and JavaScript library immune to Regular Expression Denial of Service (ReDoS) attacks by using Rust and linear Regex under the hood. Regolith has a linear worst case time complexity, compared to the default RegExp found in TypeScript and JavaScript, which has an exponential worst case.
 
 **Motivation:** I wanted a Regex library for TypeScript and JavaScript where I didn't have to worry about ReDoS attacks.
 
@@ -85,7 +85,7 @@ Explain specifically what backreferences and look-around are.
 - Talk about all the different CVEs that happen and how they can be avoided
 -->
 
-Since ReDoS vulnerabilities are hard to spot, there are rather frequent CVEs that get submitted. Having a RegEx library that has a linear worst case time would completely prevent all of these potential issues.
+Since ReDoS vulnerabilities are hard to spot, there are rather frequent CVEs that get submitted. Having a Regex library that has a linear worst case time would completely prevent all of these potential issues.
 
 ### Rust Regex under the hood
 
