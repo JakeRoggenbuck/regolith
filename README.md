@@ -12,7 +12,7 @@ A TypeScript and JavaScript library immune to Regular Expression Denial of Servi
 **Motivation:** I wanted a Regex library for TypeScript and JavaScript where I didn't have to worry about ReDoS attacks.
 
 > [!IMPORTANT]
-> Regolith is still early in development! We need help building and getting developer adoption! Currently v0.1.1.
+> Regolith is still early in development! We need help building and getting developer adoption!
 
 ## Drop-in Replacement
 
