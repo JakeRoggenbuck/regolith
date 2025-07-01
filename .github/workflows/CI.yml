@@ -468,16 +468,20 @@ jobs:
       - name: Publish
         run: |
           npm config set provenance true
-          if git log -1 --pretty=%B | grep -E "^[0-9]+\.[0-9]+\.[0-9]+$";
-          then
+
+          COMMIT_MSG=$(git log -1 --pretty=%B | head -n1 | xargs)
+          echo "Cleaned commit message: '$COMMIT_MSG'"
+
+          if [[ "$COMMIT_MSG" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Publishing stable release: $COMMIT_MSG"
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             npm publish --access public
-          elif git log -1 --pretty=%B | grep -E "^[0-9]+\.[0-9]+\.[0-9]+";
-          then
+          elif [[ "$COMMIT_MSG" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+            echo "Publishing pre-release: $COMMIT_MSG"
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             npm publish --tag next --access public
           else
-            echo "Not a release, skipping publish"
+            echo "Not a release, skipping publish. Commit message was: '$COMMIT_MSG'"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
