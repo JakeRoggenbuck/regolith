@@ -1,3 +1,3 @@
-import {Regolith} from "regolith";
+import { Regolith } from '@regolithjs/regolith';
 
-console.log(Regolith)
+console.log(Regolith);
