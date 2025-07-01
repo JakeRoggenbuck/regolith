@@ -5,8 +5,8 @@ A TypeScript and JavaScript library immune to Regular Expression Denial of Servi
 [![Rust](https://img.shields.io/badge/Rust-1A5D8A?style=for-the-badge&logo=rust&logoColor=white)](https://github.com/JakeRoggenbuck?tab=repositories&q=&type=&language=rust&sort=stargazers)
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://github.com/JakeRoggenbuck?tab=repositories&q=&type=&language=typescript)
 
-[![Version](https://img.shields.io/npm/v/regolith?style=for-the-badge)](https://www.npmjs.com/package/regolith)
-[![NPM Downloads](https://img.shields.io/npm/dy/regolith?style=for-the-badge)](https://www.npmjs.com/package/regolith)
+[![Version](https://img.shields.io/npm/v/%40regolithjs%2Fregolith?style=for-the-badge)](https://www.npmjs.com/package/%40regolithjs%2Fregolith)
+[![NPM Downloads](https://img.shields.io/npm/dy/%40regolithjs%2Fregolith?style=for-the-badge)](https://www.npmjs.com/package/%40regolithjs%2Fregolith)
 [![CI](https://img.shields.io/github/actions/workflow/status/jakeroggenbuck/regolith/CI.yml?branch=main&style=for-the-badge)](https://github.com/JakeRoggenbuck/regolith/actions)
 
 **Motivation:** I wanted a Regex library for TypeScript and JavaScript where I didn't have to worry about ReDoS attacks.
