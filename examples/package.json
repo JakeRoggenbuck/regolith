@@ -8,5 +8,8 @@
   "main": "input-regex.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@regolithjs/regolith": "^0.1.4"
   }
 }
