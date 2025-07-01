@@ -97,13 +97,13 @@ My full appreciation goes out to the developers of the Rust Regex library, who e
 #### 1. Install
 
 ```
-npm i regolith
+npm i @regolithjs/regolith
 ```
 
 #### 2. Try it out
 
 ```ts
-import { Regolith } from 'regolith';
+import { Regolith } from '@regolithjs/regolith';
 
 const pattern = new Regolith("^\\d+$");
 
