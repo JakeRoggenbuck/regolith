@@ -111,6 +111,59 @@ pattern.test("12345");  // true
 pattern.test("Hello");  // false
 ```
 
+## Examples
+
+Simple pattern matching example to match `crab` in our sentence `my crab ferris`.
+
+```js
+import { Regolith } from '@regolithjs/regolith';
+
+const pattern = new Regolith('crab', 'g');
+console.log(pattern.test('my crab ferris')); // true
+```
+
+Here we use 'g' in the `Regolith` constructor to mean a global.
+
+#### Match method
+
+```js
+const sentence = 'crab, snail, crab';
+const crabPattern = new Regolith('crab', 'g');
+
+// Find all matches
+console.log(crabPattern.match(sentence));
+// Output: ['crab', 'crab']
+````
+
+#### Replace method
+
+```js
+const sentence = 'crab, snail, crab';
+const crabPattern = new Regolith('crab', 'g');
+
+// Replace all occurrences
+console.log(crabPattern.replace(sentence, 'snake'));
+// Output: 'snake, snail, snake'
+```
+
+#### Search method
+
+```js
+const sentence = 'crab, snail, crab';
+
+const snailPattern = new Regolith('snail');
+console.log(snailPattern.search(sentence));
+// Output: 6 (index where 'snail' is found)
+```
+
+#### Split method
+
+```js
+const splitPattern = new Regolith('[,\\|]');
+console.log(splitPattern.split('apple,banana|orange'));
+// Output: ['apple', 'banana', 'orange']
+```
+
 ## Development
 
 These are instructions only if you want to build this library yourself (e.g. for development).
