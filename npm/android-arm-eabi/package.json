@@ -1,5 +1,5 @@
 {
-  "name": "@regolith/regolith-android-arm-eabi",
+  "name": "@regolithjs/regolith-android-arm-eabi",
   "version": "0.1.0",
   "os": [
     "android"

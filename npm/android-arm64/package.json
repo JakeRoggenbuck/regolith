@@ -1,5 +1,5 @@
 {
-  "name": "@regolith/regolith-android-arm64",
+  "name": "@regolithjs/regolith-android-arm64",
   "version": "0.1.0",
   "os": [
     "android"

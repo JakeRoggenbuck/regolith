@@ -1,5 +1,5 @@
 {
-  "name": "@regolith/regolith-linux-arm-gnueabihf",
+  "name": "@regolithjs/regolith-linux-arm-gnueabihf",
   "version": "0.1.0",
   "os": [
     "linux"

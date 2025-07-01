@@ -1,5 +1,5 @@
 {
-  "name": "@regolith/regolith-linux-arm-musleabihf",
+  "name": "@regolithjs/regolith-linux-arm-musleabihf",
   "version": "0.1.0",
   "os": [
     "linux"

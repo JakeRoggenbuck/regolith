@@ -1,5 +1,5 @@
 {
-  "name": "@regolith/regolith-darwin-arm64",
+  "name": "@regolithjs/regolith-darwin-arm64",
   "version": "0.1.0",
   "os": [
     "darwin"
