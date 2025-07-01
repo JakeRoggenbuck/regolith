@@ -1,5 +1,5 @@
 {
-  "name": "@regolith/regolith-linux-riscv64-gnu",
+  "name": "@regolithjs/regolith-linux-riscv64-gnu",
   "version": "0.1.0",
   "os": [
     "linux"
