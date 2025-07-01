@@ -1,5 +1,8 @@
 {
   "name": "@regolithjs/regolith-win32-x64-msvc",
+  "repository": {
+    "url": "https://github.com/JakeRoggenbuck/regolith.git"
+  },
   "version": "0.1.0",
   "os": [
     "win32"

@@ -11,5 +11,8 @@
   "license": "MIT",
   "engines": {
     "node": ">= 10"
+  },
+  "repository": {
+    "url": "https://github.com/JakeRoggenbuck/regolith.git"
   }
 }

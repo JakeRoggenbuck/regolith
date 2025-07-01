@@ -17,5 +17,8 @@
   },
   "libc": [
     "musl"
-  ]
+  ],
+  "repository": {
+    "url": "https://github.com/JakeRoggenbuck/regolith.git"
+  }
 }
