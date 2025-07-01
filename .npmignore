@@ -13,3 +13,5 @@ __test__
 renovate.json
 node_modules
 venv
+examples
+images
