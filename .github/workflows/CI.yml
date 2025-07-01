@@ -469,7 +469,7 @@ jobs:
         run: |
           npm config set provenance true
 
-          COMMIT_MSG=$(git log -1 --pretty=%B | head -n1 | xargs)
+          COMMIT_MSG=$(git log --no-merges -1 --pretty=format:%s)
           echo "Cleaned commit message: '$COMMIT_MSG'"
 
           if [[ "$COMMIT_MSG" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
