@@ -469,7 +469,16 @@ jobs:
         run: |
           npm config set provenance true
 
-          COMMIT_MSG=$(git log --no-merges -1 --pretty=format:%s)
+          # Use GitHub context for commit message, fallback to git log
+          if [[ -n "${{ github.event.head_commit.message }}" ]]; then
+            COMMIT_MSG="${{ github.event.head_commit.message }}"
+          else
+            COMMIT_MSG=$(git log --no-merges --pretty=format:%s -n 1)
+          fi
+
+          # Extract just the first line if it's a multiline commit message
+          COMMIT_MSG=$(echo "$COMMIT_MSG" | head -n 1)
+
           echo "Cleaned commit message: '$COMMIT_MSG'"
 
           if [[ "$COMMIT_MSG" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
