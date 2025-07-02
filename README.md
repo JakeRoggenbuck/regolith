@@ -96,6 +96,12 @@ My full appreciation goes out to the developers of the Rust Regex library, who e
 
 I'm still working to get this to be able to link to client side run applications like when you use react with "use client". This may result in either finding a new way to link Rust (possible with WASM) or making my own Regex engine. Currently, everything works for server side JavaScript and TypeScript, which is the main focus of this, because servers are what usually get attacked in ReDoS attacks instead of clients.
 
+![image](https://github.com/user-attachments/assets/dd6b7579-c5c1-497a-9ce0-3909b795f00e)
+
+You might get a message link: `No loader is configured for ".node" files: node_modules/@regolithjs/regolith-linux-x64-gnu/regolith.linux-x64-gnu.node`.
+
+I will actively be working to add this functionality and it will be tracked as [issue #40](https://github.com/JakeRoggenbuck/regolith/issues/40). For now, I recommend using Regolith for server side and systems applications to prevent ReDoS attacks for servers, as this is what commonly gets Denial of Service attacks.
+
 ## Usage (Quick Start)
 
 #### 1. Install
