@@ -92,6 +92,10 @@ Regolith makes JavaScript bindings (using [napi-rs](https://github.com/napi-rs/n
 
 My full appreciation goes out to the developers of the Rust Regex library, who enabled this project to exist.
 
+### Limitations
+
+I'm still working to get this to be able to link to client side run applications like when you use react with "use client". This may result in either finding a new way to link Rust (possible with WASM) or making my own Regex engine. Currently, everything works for server side JavaScript and TypeScript, which is the main focus of this, because servers are what usually get attacked in ReDoS attacks instead of clients.
+
 ## Usage (Quick Start)
 
 #### 1. Install
