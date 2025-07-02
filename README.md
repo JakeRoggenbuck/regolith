@@ -270,6 +270,10 @@ Use `cargo fmt`. This is actually checked in the automated tests when you create
 
 Use [prettier](https://github.com/prettier/prettier) with `prettier --write <file>` or `prettier --write .` to format all `.ts` and `.js` files.
 
+#### 3. Website
+
+The source code for the Regolith website can be found at [github.com/JakeRoggenbuck/regolith-website](https://github.com/JakeRoggenbuck/regolith-website). The URL for the website is [regolith.vercel.app](https://regolith.vercel.app/).
+
 ### Report a Bug
 
 If you find a bug, please send me an email at `bug at jr0 dot org` and or [open an issue](https://github.com/JakeRoggenbuck/regolith/issues).
