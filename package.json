@@ -30,10 +30,6 @@
   "bugs": {
     "url": "https://github.com/JakeRoggenbuck/regolith/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JakeRoggenbuck/regolith.git"
-  },
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/JakeRoggenbuck"
@@ -62,7 +58,10 @@
   "license": "MIT",
   "devDependencies": {
     "@napi-rs/cli": "^2.18.4",
-    "ava": "^6.0.1"
+    "@types/node": "^24.0.10",
+    "ava": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   },
   "ava": {
     "timeout": "3m"
@@ -74,6 +73,7 @@
     "artifacts": "napi artifacts",
     "build": "napi build --platform --release",
     "build:debug": "napi build --platform",
+    "check-version": "ts-node scripts/check-version.ts",
     "prepublishOnly": "napi prepublish -t npm",
     "test": "ava",
     "universal": "napi universal",
