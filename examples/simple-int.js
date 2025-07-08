@@ -1,6 +1,6 @@
-import { Regolith } from '@regolithjs/regolith';
+import { Regolith } from "@regolithjs/regolith";
 
-const pattern = new Regolith('^\\d+$');
+const pattern = new Regolith("^\\d+$");
 
-console.log(pattern.test('12345')); // true
-console.log(pattern.test('Hello')); // false
+console.log(pattern.test("12345")); // true
+console.log(pattern.test("Hello")); // false

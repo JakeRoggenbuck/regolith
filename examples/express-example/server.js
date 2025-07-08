@@ -1,31 +1,31 @@
-import express from 'express';
-import { Regolith } from '@regolithjs/regolith';
+import express from "express";
+import { Regolith } from "@regolithjs/regolith";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 // Semantic version regex pattern
 // Matches: MAJOR.MINOR.PATCH with optional pre-release and build metadata
 // Examples: 1.0.0, 2.1.3-alpha.1, 1.0.0-beta+20230101
 const semverPattern = new Regolith(
-  '^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$',
+    "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
 );
 
 // Basic semver pattern for simpler validation
-const basicSemverPattern = new Regolith('^\\d+\\.\\d+\\.\\d+$');
+const basicSemverPattern = new Regolith("^\\d+\\.\\d+\\.\\d+$");
 
 // Pre-release version pattern
-const preReleasePattern = new Regolith('-(alpha|beta|rc)\\.?\\d*', 'i');
+const preReleasePattern = new Regolith("-(alpha|beta|rc)\\.?\\d*", "i");
 
 // Routes
 
 // Home route - serve HTML interface
-app.get('/', (req, res) => {
-  res.send(`
+app.get("/", (req, res) => {
+    res.send(`
     <!DOCTYPE html>
     <html>
     <head>
@@ -111,195 +111,195 @@ app.get('/', (req, res) => {
 });
 
 // API endpoint to validate a single version
-app.post('/api/validate', (req, res) => {
-  const { version } = req.body;
+app.post("/api/validate", (req, res) => {
+    const { version } = req.body;
 
-  if (!version) {
-    return res.status(400).json({
-      error: 'Version is required',
-      isValid: false,
-    });
-  }
-
-  try {
-    const isFullSemver = semverPattern.test(version);
-    const isBasicSemver = basicSemverPattern.test(version);
-    const hasPreRelease = preReleasePattern.test(version);
-
-    let type = 'invalid';
-    let parts = null;
-
-    if (isFullSemver) {
-      type = hasPreRelease ? 'pre-release semver' : 'full semver';
-      // Extract parts using match
-      const matches = version.match(
-        /^(\d+)\.(\d+)\.(\d+)(?:-([^+]+))?(?:\+(.+))?$/,
-      );
-      if (matches) {
-        parts = {
-          major: matches[1],
-          minor: matches[2],
-          patch: matches[3],
-          prerelease: matches[4] || null,
-          build: matches[5] || null,
-        };
-      }
-    } else if (isBasicSemver) {
-      type = 'basic semver';
-      const matches = version.match(/^(\d+)\.(\d+)\.(\d+)$/);
-      if (matches) {
-        parts = {
-          major: matches[1],
-          minor: matches[2],
-          patch: matches[3],
-        };
-      }
+    if (!version) {
+        return res.status(400).json({
+            error: "Version is required",
+            isValid: false,
+        });
     }
 
-    res.json({
-      version,
-      isValid: isFullSemver || isBasicSemver,
-      type,
-      parts,
-      patterns: {
-        fullSemver: isFullSemver,
-        basicSemver: isBasicSemver,
-        hasPreRelease: hasPreRelease,
-      },
-    });
-  } catch (error) {
-    res.status(500).json({
-      error: error.message,
-      isValid: false,
-    });
-  }
+    try {
+        const isFullSemver = semverPattern.test(version);
+        const isBasicSemver = basicSemverPattern.test(version);
+        const hasPreRelease = preReleasePattern.test(version);
+
+        let type = "invalid";
+        let parts = null;
+
+        if (isFullSemver) {
+            type = hasPreRelease ? "pre-release semver" : "full semver";
+            // Extract parts using match
+            const matches = version.match(
+                /^(\d+)\.(\d+)\.(\d+)(?:-([^+]+))?(?:\+(.+))?$/,
+            );
+            if (matches) {
+                parts = {
+                    major: matches[1],
+                    minor: matches[2],
+                    patch: matches[3],
+                    prerelease: matches[4] || null,
+                    build: matches[5] || null,
+                };
+            }
+        } else if (isBasicSemver) {
+            type = "basic semver";
+            const matches = version.match(/^(\d+)\.(\d+)\.(\d+)$/);
+            if (matches) {
+                parts = {
+                    major: matches[1],
+                    minor: matches[2],
+                    patch: matches[3],
+                };
+            }
+        }
+
+        res.json({
+            version,
+            isValid: isFullSemver || isBasicSemver,
+            type,
+            parts,
+            patterns: {
+                fullSemver: isFullSemver,
+                basicSemver: isBasicSemver,
+                hasPreRelease: hasPreRelease,
+            },
+        });
+    } catch (error) {
+        res.status(500).json({
+            error: error.message,
+            isValid: false,
+        });
+    }
 });
 
 // API endpoint to validate multiple versions
-app.post('/api/validate-batch', (req, res) => {
-  const { versions } = req.body;
+app.post("/api/validate-batch", (req, res) => {
+    const { versions } = req.body;
 
-  if (!Array.isArray(versions)) {
-    return res.status(400).json({
-      error: 'Versions must be an array',
-    });
-  }
+    if (!Array.isArray(versions)) {
+        return res.status(400).json({
+            error: "Versions must be an array",
+        });
+    }
 
-  try {
-    const results = versions.map((version) => {
-      const isFullSemver = semverPattern.test(version);
-      const isBasicSemver = basicSemverPattern.test(version);
-      const hasPreRelease = preReleasePattern.test(version);
+    try {
+        const results = versions.map((version) => {
+            const isFullSemver = semverPattern.test(version);
+            const isBasicSemver = basicSemverPattern.test(version);
+            const hasPreRelease = preReleasePattern.test(version);
 
-      return {
-        version,
-        isValid: isFullSemver || isBasicSemver,
-        type: isFullSemver
-          ? hasPreRelease
-            ? 'pre-release'
-            : 'release'
-          : isBasicSemver
-            ? 'basic'
-            : 'invalid',
-        patterns: {
-          fullSemver: isFullSemver,
-          basicSemver: isBasicSemver,
-          hasPreRelease: hasPreRelease,
-        },
-      };
-    });
+            return {
+                version,
+                isValid: isFullSemver || isBasicSemver,
+                type: isFullSemver
+                    ? hasPreRelease
+                        ? "pre-release"
+                        : "release"
+                    : isBasicSemver
+                      ? "basic"
+                      : "invalid",
+                patterns: {
+                    fullSemver: isFullSemver,
+                    basicSemver: isBasicSemver,
+                    hasPreRelease: hasPreRelease,
+                },
+            };
+        });
 
-    const summary = {
-      total: versions.length,
-      valid: results.filter((r) => r.isValid).length,
-      invalid: results.filter((r) => !r.isValid).length,
-    };
+        const summary = {
+            total: versions.length,
+            valid: results.filter((r) => r.isValid).length,
+            invalid: results.filter((r) => !r.isValid).length,
+        };
 
-    res.json({
-      results,
-      summary,
-    });
-  } catch (error) {
-    res.status(500).json({
-      error: error.message,
-    });
-  }
+        res.json({
+            results,
+            summary,
+        });
+    } catch (error) {
+        res.status(500).json({
+            error: error.message,
+        });
+    }
 });
 
 // API endpoint to extract versions from text
-app.post('/api/extract', (req, res) => {
-  const { text } = req.body;
+app.post("/api/extract", (req, res) => {
+    const { text } = req.body;
 
-  if (!text) {
-    return res.status(400).json({
-      error: 'Text is required',
-    });
-  }
+    if (!text) {
+        return res.status(400).json({
+            error: "Text is required",
+        });
+    }
 
-  try {
-    // Use global flag to find all matches
-    const globalSemverPattern = new Regolith(
-      '(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?',
-      'g',
-    );
+    try {
+        // Use global flag to find all matches
+        const globalSemverPattern = new Regolith(
+            "(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?",
+            "g",
+        );
 
-    const matches = globalSemverPattern.match(text) || [];
+        const matches = globalSemverPattern.match(text) || [];
 
-    const validVersions = matches.map((version) => ({
-      version,
-      isValid: semverPattern.test(version),
-      hasPreRelease: preReleasePattern.test(version),
-    }));
+        const validVersions = matches.map((version) => ({
+            version,
+            isValid: semverPattern.test(version),
+            hasPreRelease: preReleasePattern.test(version),
+        }));
 
-    res.json({
-      text,
-      foundVersions: matches,
-      validVersions: validVersions.filter((v) => v.isValid),
-      totalFound: matches.length,
-      totalValid: validVersions.filter((v) => v.isValid).length,
-    });
-  } catch (error) {
-    res.status(500).json({
-      error: error.message,
-    });
-  }
+        res.json({
+            text,
+            foundVersions: matches,
+            validVersions: validVersions.filter((v) => v.isValid),
+            totalFound: matches.length,
+            totalValid: validVersions.filter((v) => v.isValid).length,
+        });
+    } catch (error) {
+        res.status(500).json({
+            error: error.message,
+        });
+    }
 });
 
 // Health check endpoint
-app.get('/health', (req, res) => {
-  res.json({
-    status: 'healthy',
-    timestamp: new Date().toISOString(),
-    regolithVersion: 'Using @regolithjs/regolith for pattern matching',
-  });
+app.get("/health", (req, res) => {
+    res.json({
+        status: "healthy",
+        timestamp: new Date().toISOString(),
+        regolithVersion: "Using @regolithjs/regolith for pattern matching",
+    });
 });
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Semver Validator Server running on port ${PORT}`);
-  console.log(`📊 Visit http://localhost:${PORT} to test version validation`);
-  console.log(`🔍 API endpoints:`);
-  console.log(`   POST /api/validate - Validate single version`);
-  console.log(`   POST /api/validate-batch - Validate multiple versions`);
-  console.log(`   POST /api/extract - Extract versions from text`);
+    console.log(`🚀 Semver Validator Server running on port ${PORT}`);
+    console.log(`📊 Visit http://localhost:${PORT} to test version validation`);
+    console.log(`🔍 API endpoints:`);
+    console.log(`   POST /api/validate - Validate single version`);
+    console.log(`   POST /api/validate-batch - Validate multiple versions`);
+    console.log(`   POST /api/extract - Extract versions from text`);
 });
 
 // Example usage for testing
 const testVersions = [
-  '1.0.0', // valid basic
-  '2.1.3', // valid basic
-  '1.0.0-alpha', // valid pre-release
-  '2.0.0-beta.1', // valid pre-release
-  '1.0.0-rc.1+build', // valid with build
-  'v1.0.0', // invalid (prefix)
-  '1.0', // invalid (incomplete)
-  '1.0.0.0', // invalid (too many parts)
+    "1.0.0", // valid basic
+    "2.1.3", // valid basic
+    "1.0.0-alpha", // valid pre-release
+    "2.0.0-beta.1", // valid pre-release
+    "1.0.0-rc.1+build", // valid with build
+    "v1.0.0", // invalid (prefix)
+    "1.0", // invalid (incomplete)
+    "1.0.0.0", // invalid (too many parts)
 ];
 
-console.log('\n🧪 Testing Regolith patterns:');
+console.log("\n🧪 Testing Regolith patterns:");
 testVersions.forEach((version) => {
-  const isValid = semverPattern.test(version);
-  console.log(
-    `   ${version.padEnd(15)} -> ${isValid ? '✅ Valid' : '❌ Invalid'}`,
-  );
+    const isValid = semverPattern.test(version);
+    console.log(
+        `   ${version.padEnd(15)} -> ${isValid ? "✅ Valid" : "❌ Invalid"}`,
+    );
 });

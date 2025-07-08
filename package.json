@@ -78,7 +78,7 @@
     "test": "ava",
     "universal": "napi universal",
     "version": "napi version",
-    "format": "prettier \"**/*.{js,ts,mts,mjs}\" --write ."
+    "format": "prettier \"**/*.{js,ts,mts,mjs}\" --write"
   },
   "packageManager": "yarn@4.9.2"
 }
