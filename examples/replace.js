@@ -1,5 +1,5 @@
-import { Regolith } from '@regolithjs/regolith';
+import { Regolith } from "@regolithjs/regolith";
 
-const pattern = new Regolith('foo');
+const pattern = new Regolith("foo");
 
-console.log(pattern.test('foobar'));
+console.log(pattern.test("foobar"));
