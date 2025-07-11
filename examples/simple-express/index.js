@@ -1,21 +1,21 @@
-import express from 'express';
-import { Regolith } from '@regolithjs/regolith';
+import express from "express";
+import { Regolith } from "@regolithjs/regolith";
 
 const app = express();
 const port = 3000;
 
-const intPattern = new Regolith('^\\d+$');
-const floatPattern = new Regolith('^\\d*\\.\\d+$');
+const intPattern = new Regolith("^\\d+$");
+const floatPattern = new Regolith("^\\d*\\.\\d+$");
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+app.get("/", (req, res) => {
+    res.send("Hello World!");
 });
 
-app.get('/check', (req, res) => {
+app.get("/check", (req, res) => {
     const value = req.query.value;
 
     if (!value) {
-        return res.status(400).send('Please provide a value query parameter');
+        return res.status(400).send("Please provide a value query parameter");
     }
 
     const isInt = intPattern.test(value);
