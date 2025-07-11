@@ -173,6 +173,44 @@ console.log(splitPattern.split('apple,banana|orange'));
 // Output: ['apple', 'banana', 'orange']
 ```
 
+### Express Example
+
+Make a backend express app that will tell you if a number is an int or a float.
+
+```js
+import express from "express";
+import { Regolith } from "@regolithjs/regolith";
+
+const app = express();
+const port = 3000;
+
+// Create Regolith Regex patterns
+const intPattern = new Regolith("^\\d+$");
+const floatPattern = new Regolith("^\\d*\\.\\d+$");
+
+app.get("/check", (req, res) => {
+    const value = req.query.value;
+
+    if (!value) {
+        return res.status(400).send("Please provide a value query parameter");
+    }
+
+    // Run the test with Regolith pattern
+    const isInt = intPattern.test(value);
+    const isFloat = floatPattern.test(value);
+
+    res.json({
+        value,
+        isInt,
+        isFloat,
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+});
+```
+
 ## Development
 
 These are instructions only if you want to build this library yourself (e.g. for development).
