@@ -281,7 +281,7 @@ Use [prettier](https://github.com/prettier/prettier) with `prettier --write <fil
 
 #### 3. Website
 
-The source code for the Regolith website can be found at [github.com/JakeRoggenbuck/regolith-website](https://github.com/JakeRoggenbuck/regolith-website). The URL for the website is [regolith.vercel.app](https://regolith.vercel.app/).
+The source code for the Regolith website can be found at [github.com/JakeRoggenbuck/regolith-website](https://github.com/JakeRoggenbuck/regolith-website). The URL for the website is [regolithjs.com](https://regolithjs.com).
 
 #### 4. Platforms Tested
 
