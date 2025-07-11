@@ -283,6 +283,26 @@ Use [prettier](https://github.com/prettier/prettier) with `prettier --write <fil
 
 The source code for the Regolith website can be found at [github.com/JakeRoggenbuck/regolith-website](https://github.com/JakeRoggenbuck/regolith-website). The URL for the website is [regolith.vercel.app](https://regolith.vercel.app/).
 
+#### 4. Platforms Tested
+
+These are the platforms that Regolith has been tested on. These checks happen automatically in the [CI](https://github.com/JakeRoggenbuck/regolith/blob/main/.github/workflows/CI.yml).
+
+| Platform               | Status     |
+|------------------------|------------|
+| Arm 64 Apple Darwin    | Working    |
+| Arm 64 Linux Android   | Working    |
+| Arm 64 Linux GNU       | Working    |
+| Arm 64 Linux MUSL      | Working    |
+| Arm 64 PC Windows MSVC | Working    |
+| Arm v7 Linux GNU       | Working    |
+| Arm v7 Linux MUSL      | Working    |
+| x86-64 Linux MUSL      | Working    |
+| x86-64 FreeBSD         | Not Tested |
+| i686 PC Windows MSVC   | Working    |
+| Arm v7 Linux Andriod   | Working    |
+| Universal Apple Darwin | Working    |
+| RISC-V 64 GC Linux GNU | Working    |
+
 ### Report a Bug
 
 If you find a bug, please send me an email at `bug at jr0 dot org` and or [open an issue](https://github.com/JakeRoggenbuck/regolith/issues).
