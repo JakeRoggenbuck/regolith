@@ -175,7 +175,7 @@ console.log(splitPattern.split('apple,banana|orange'));
 
 ### Express Example
 
-Make a backend express app that will tell you if a number is an int or a float.
+Make a backend express app that will tell you if a number is an int or a float. View the [complete guide](./examples/simple-express/README.md) for the Express example.
 
 ```js
 import express from "express";
