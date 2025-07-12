@@ -173,6 +173,44 @@ console.log(splitPattern.split('apple,banana|orange'));
 // Output: ['apple', 'banana', 'orange']
 ```
 
+### Express Example
+
+Make a backend express app that will tell you if a number is an int or a float.
+
+```js
+import express from "express";
+import { Regolith } from "@regolithjs/regolith";
+
+const app = express();
+const port = 3000;
+
+// Create Regolith Regex patterns
+const intPattern = new Regolith("^\\d+$");
+const floatPattern = new Regolith("^\\d*\\.\\d+$");
+
+app.get("/check", (req, res) => {
+    const value = req.query.value;
+
+    if (!value) {
+        return res.status(400).send("Please provide a value query parameter");
+    }
+
+    // Run the test with Regolith pattern
+    const isInt = intPattern.test(value);
+    const isFloat = floatPattern.test(value);
+
+    res.json({
+        value,
+        isInt,
+        isFloat,
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+});
+```
+
 ## Development
 
 These are instructions only if you want to build this library yourself (e.g. for development).
@@ -281,7 +319,27 @@ Use [prettier](https://github.com/prettier/prettier) with `prettier --write <fil
 
 #### 3. Website
 
-The source code for the Regolith website can be found at [github.com/JakeRoggenbuck/regolith-website](https://github.com/JakeRoggenbuck/regolith-website). The URL for the website is [regolith.vercel.app](https://regolith.vercel.app/).
+The source code for the Regolith website can be found at [github.com/JakeRoggenbuck/regolith-website](https://github.com/JakeRoggenbuck/regolith-website). The URL for the website is [regolithjs.com](https://regolithjs.com).
+
+#### 4. Platforms Tested
+
+These are the platforms that Regolith has been tested on. These checks happen automatically in the [CI](https://github.com/JakeRoggenbuck/regolith/blob/main/.github/workflows/CI.yml).
+
+| Platform               | Status     |
+|------------------------|------------|
+| Arm 64 Apple Darwin    | Working    |
+| Arm 64 Linux Android   | Working    |
+| Arm 64 Linux GNU       | Working    |
+| Arm 64 Linux MUSL      | Working    |
+| Arm 64 PC Windows MSVC | Working    |
+| Arm v7 Linux GNU       | Working    |
+| Arm v7 Linux MUSL      | Working    |
+| x86-64 Linux MUSL      | Working    |
+| x86-64 FreeBSD         | Not Tested |
+| i686 PC Windows MSVC   | Working    |
+| Arm v7 Linux Andriod   | Working    |
+| Universal Apple Darwin | Working    |
+| RISC-V 64 GC Linux GNU | Working    |
 
 ### Report a Bug
 
