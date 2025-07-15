@@ -7,6 +7,7 @@ A server-side TypeScript and JavaScript library immune to Regular Expression Den
 [![Version](https://img.shields.io/npm/v/%40regolithjs%2Fregolith?style=for-the-badge)](https://www.npmjs.com/package/%40regolithjs%2Fregolith)
 [![NPM Downloads](https://img.shields.io/npm/d18m/%40regolithjs%2Fregolith?style=for-the-badge)](https://www.npmjs.com/package/%40regolithjs%2Fregolith)
 [![CI](https://img.shields.io/github/actions/workflow/status/jakeroggenbuck/regolith/CI.yml?branch=main&style=for-the-badge)](https://github.com/JakeRoggenbuck/regolith/actions)
+[![Regolith](https://img.shields.io/badge/Regolith-f99d4c?style=for-the-badge)](https://github.com/JakeRoggenbuck/regolith)
 
 **Motivation:** I wanted a Regex library for TypeScript and JavaScript where I didn't have to worry about ReDoS attacks.
 
