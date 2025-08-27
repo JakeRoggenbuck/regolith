@@ -20,6 +20,8 @@ Regolith attempts to be a drop-in replacement for RegExp and requires minimal (t
 
 <img src="./images/regolith-drop-in.svg">
 
+Regolith intentionally does not support look-around and backreferences. If you use either of those features, you may have to change your Regex. See the [trade-off](#trade-off) section for details.
+
 ## Preventing ReDoS Attacks
 
 ### What are ReDoS attacks?
