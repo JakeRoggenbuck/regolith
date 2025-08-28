@@ -11,9 +11,6 @@ A server-side TypeScript and JavaScript library immune to Regular Expression Den
 
 **Motivation:** I wanted a Regex library for TypeScript and JavaScript where I didn't have to worry about ReDoS attacks.
 
-> [!IMPORTANT]
-> Regolith is still early in development! We need help building and getting developer adoption!
-
 ## Usage (Quick Start)
 
 #### 1. Install Regolith
