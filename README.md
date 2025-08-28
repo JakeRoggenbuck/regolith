@@ -14,6 +14,27 @@ A server-side TypeScript and JavaScript library immune to Regular Expression Den
 > [!IMPORTANT]
 > Regolith is still early in development! We need help building and getting developer adoption!
 
+## Usage (Quick Start)
+
+#### 1. Install Regolith
+
+```
+npm i @regolithjs/regolith
+```
+
+#### 2. Try it out
+
+```ts
+import { Regolith } from '@regolithjs/regolith';
+
+const pattern = new Regolith("^\\d+$");
+
+pattern.test("12345");  // true
+pattern.test("Hello");  // false
+```
+
+See more [examples](#examples)
+
 ## Drop-in Replacement
 
 Regolith attempts to be a drop-in replacement for RegExp and requires minimal (to no) changes to be used instead. The goal of Regolith is to allow developers to easily build software that is immune to ReDoS attacks.
@@ -103,25 +124,6 @@ I'm still working to get this to be able to link to client side run applications
 You might get a message link: `No loader is configured for ".node" files: node_modules/@regolithjs/regolith-linux-x64-gnu/regolith.linux-x64-gnu.node`.
 
 I will actively be working to add this functionality and it will be tracked as [issue #40](https://github.com/JakeRoggenbuck/regolith/issues/40). For now, I recommend using Regolith for server side and systems applications to prevent ReDoS attacks for servers, as this is what commonly gets Denial of Service attacks.
-
-## Usage (Quick Start)
-
-#### 1. Install
-
-```
-npm i @regolithjs/regolith
-```
-
-#### 2. Try it out
-
-```ts
-import { Regolith } from '@regolithjs/regolith';
-
-const pattern = new Regolith("^\\d+$");
-
-pattern.test("12345");  // true
-pattern.test("Hello");  // false
-```
 
 ## Examples
 
