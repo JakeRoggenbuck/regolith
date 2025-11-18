@@ -63,7 +63,7 @@ jobs:
             target: i686-pc-windows-msvc
           - host: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-            docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian
+            docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian-latest
             build: yarn build --target x86_64-unknown-linux-gnu
           - host: ubuntu-latest
             target: x86_64-unknown-linux-musl
@@ -74,7 +74,7 @@ jobs:
             build: yarn build --target aarch64-apple-darwin
           - host: ubuntu-latest
             target: aarch64-unknown-linux-gnu
-            docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian-aarch64
+            docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian-aarch64-latest
             build: yarn build --target aarch64-unknown-linux-gnu
           - host: ubuntu-latest
             target: armv7-unknown-linux-gnueabihf
