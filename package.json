@@ -1,6 +1,6 @@
 {
   "name": "@regolithjs/regolith",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A TypeScript and JavaScript library immune to Regular Expression Denial of Service (ReDoS) attacks by using Rust and linear RegEx under the hood. Regolith has a linear worst case time complexity, compared to the default RegExp found in TypeScript and JavaScript, which has an exponential worst case.",
   "main": "index.js",
   "types": "index.d.ts",
